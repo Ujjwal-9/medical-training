@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  example:
+    build: .
+    volumes:
+      - .:/app
+    command: conda run -n test python gradcam.py "test.png" "images/"
