@@ -16,7 +16,6 @@ from flask import Flask, flash, request, redirect, url_for, send_file
 from werkzeug.utils import secure_filename
 
 import random
-import util
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
