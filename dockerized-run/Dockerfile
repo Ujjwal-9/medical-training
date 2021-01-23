@@ -1,16 +1,21 @@
-FROM continuumio/miniconda3
+FROM python:3.6.7
 
 WORKDIR /app
 
 # Create the environment:
-COPY environment.yml .
+# RUN apk update
+# RUN apk add make automake gcc g++ subversion python3-dev
+
+COPY requirements.txt .
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
 COPY test-model.h5 .
 COPY train-small.csv .
 COPY gradcam.py .
-RUN conda env create -f environment.yml
-
 # Make RUN commands use the new environment:
-SHELL ["conda", "run", "-n", "test", "/bin/bash", "-c"]
+# SHELL ["conda", "run", "-n", "test", "/bin/bash", "-c"]
 
 # Make sure the environment is activated:
 #RUN echo "Make sure numpy is installed:"

@@ -4,4 +4,4 @@ services:
     build: .
     volumes:
       - ./images:/app/images
-    command: conda run -n test python gradcam.py "test.png" "images/"
+    command: python gradcam.py "test.png" "images/"
